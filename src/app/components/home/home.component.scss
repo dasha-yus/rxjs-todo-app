@@ -1,0 +1,114 @@
+@import "../../../styles.scss";
+
+.todos {
+    background-color: darkslategray;
+    color: $main-color;
+    width: 550px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+    padding: 25px 50px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+
+    & h1 {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &_add {
+        display: flex;
+        justify-content: center;
+        height: 40px;
+
+        & input {
+            width: 80%;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: rgb(59, 100, 100);
+            color: $main-color;
+
+            &:focus {
+               outline: 0;
+               outline-offset: 0;
+            }
+
+            &::placeholder {
+                color: $main-color;
+            }
+        }
+
+        & button {
+            width: 20%;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 16px;
+            background-color: $main-color;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(110%);
+            }
+        }
+    }
+
+    &_list {
+        margin-top: 10px;
+        overflow: auto;
+        height: 400px;
+    }
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $main-color;
+    margin-top: 20px;
+
+    &_left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.checkbox {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    appearance: none;
+    border: 1px solid $main-color;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:checked {
+        border-color: gray;
+    }
+}
+
+i {
+    margin: 0 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    &.fa-edit {
+        color: rgb(145, 220, 255);
+    }
+
+    &.fa-trash-alt {
+      color: rgb(255, 104, 104);
+    }
+
+    &:hover {
+        filter: brightness(120%);
+    }
+}

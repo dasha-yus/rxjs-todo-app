@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "rxjs-todo-app"
+  "defaultProject": "rxjs-todo-app",
+  "cli": {
+    "analytics": false
+  }
 }

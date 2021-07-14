@@ -1,0 +1,25 @@
+<div class="todos">
+  <h1>Todos</h1>
+  <div class="todos_add">
+    <input
+      type="text"
+      name="todo"
+      placeholder="New todo..."
+      [(ngModel)]="newTodo"
+      (keydown.enter)='addTodo()'
+    />
+    <button (click)="addTodo()">Add</button>
+  </div>
+  <div class="todos_list">
+    <div class="todo" *ngFor="let todo of todos">
+      <div class="todo_left">
+        <input type="checkbox" class="checkbox" [checked]="todo.completed" (click)="toggleTodo(todo.id)"/>
+        <h3 [ngStyle]="todo.completed && {'color': 'gray'}">{{todo.title}}</h3>
+      </div>
+      <div>
+        <i class="fas fa-edit" title="edit"></i>
+        <i class="fas fa-trash-alt" title="remove" (click)="removeTodo(todo.id)"></i>
+      </div>
+    </div>
+  </div>
+</div>
