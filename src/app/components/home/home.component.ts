@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from 'src/app/models/todo';
+import { StoreService } from '../../store.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,58 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  newTodo: string = '';
-  todos = [
-    {
-      id: 1,
-      title: 'first todo',
-      completed: false,
-    },
-    {
-      id: 2,
-      title: 'second todo',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'third todo',
-      completed: false,
-    },
-    {
-      id: 4,
-      title: 'fourth todo',
-      completed: false,
-    },
-    {
-      id: 5,
-      title: 'todo number five',
-      completed: false,
-    },
-  ];
+  newTodo = '';
+  todos$: Observable<Array<Todo>>;
 
-  constructor() {}
+  constructor(private store: StoreService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.init();
+    this.todos$ = this.store.getAllTodos()
+  }
 
   addTodo() {
-    if (this.newTodo.trim() !== '') {
-      this.todos.push({
-        id: 6,
-        title: this.newTodo.trim(),
-        completed: false,
-      });
-      this.newTodo = '';
-    }
+    this.store.addTodo(this.newTodo);
+    this.newTodo = '';
   }
 
   removeTodo(id) {
     if (window.confirm('Are you sure you want to delete?')) {
-      this.todos = this.todos.filter((todo) => todo.id !== id);
+      this.store.deleteTodo(id);
     }
   }
 
   toggleTodo(id) {
-    let index = this.todos.findIndex((todo) => todo.id == id);
-    this.todos[index].completed = !this.todos[index].completed;
+    this.store.toggleTodo(id);
   }
 }

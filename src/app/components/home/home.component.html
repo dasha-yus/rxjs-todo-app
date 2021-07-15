@@ -11,7 +11,7 @@
     <button (click)="addTodo()">Add</button>
   </div>
   <div class="todos_list">
-    <div class="todo" *ngFor="let todo of todos">
+    <div class="todo" *ngFor="let todo of todos$ | async">
       <div class="todo_left">
         <input type="checkbox" class="checkbox" [checked]="todo.completed" (click)="toggleTodo(todo.id)"/>
         <h3 [ngStyle]="todo.completed && {'color': 'gray'}">{{todo.title}}</h3>
