@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Edit todo</h2>
+
+<mat-dialog-content>
+  <input
+    type="text"
+    name="todo"
+    [(ngModel)]="data.title"
+  />
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="onSave()">Save</button>
+  <button class="mat-raised-button" (click)="onClose()">Close</button>
+</mat-dialog-actions>

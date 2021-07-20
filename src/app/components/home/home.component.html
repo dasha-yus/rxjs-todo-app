@@ -1,4 +1,4 @@
-<div class="todos">
+<div class="todos" *ngIf="(fetchData$ | async ); else errorFetch">
   <h1>Todos</h1>
   <div class="todos_add">
     <input
@@ -10,16 +10,19 @@
     />
     <button (click)="addTodo()">Add</button>
   </div>
-  <div class="todos_list">
-    <div class="todo" *ngFor="let todo of todos$ | async">
+  <div class="todos_list"  *ngIf="(todos$ | async ) as todos; else loading">
+    <div class="todo"*ngFor="let todo of todos">
       <div class="todo_left">
-        <input type="checkbox" class="checkbox" [checked]="todo.completed" (click)="toggleTodo(todo.id)"/>
+        <input type="checkbox" class="checkbox" [checked]="todo.completed" (click)="onToggle(todo.id)"/>
         <h3 [ngStyle]="todo.completed && {'color': 'gray'}">{{todo.title}}</h3>
       </div>
       <div>
-        <i class="fas fa-edit" title="edit"></i>
+        <i class="fas fa-edit" title="edit" (click)="openDialog(todo.id, todo.title)"></i>
         <i class="fas fa-trash-alt" title="remove" (click)="removeTodo(todo.id)"></i>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #loading> Loading, please wait ...</ng-template>
+<ng-template #errorFetch> There is an error while loading the data, please try again ...</ng-template>

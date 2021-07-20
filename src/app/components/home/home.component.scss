@@ -4,7 +4,7 @@
     background-color: darkslategray;
     color: $main-color;
     width: 550px;
-    height: 600px;
+    height: 560px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,8 +15,10 @@
     0 10px 10px rgba(0, 0, 0, 0.22);
 
     & h1 {
+        margin: 20px 0;
         text-align: center;
         text-transform: uppercase;
+        font-weight: bold;
     }
 
     &_add {
@@ -71,15 +73,17 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $main-color;
-    margin-top: 20px;
+    margin-top: 35px;
 
     &_left {
         width: 80%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        padding-bottom: 15px;
 
         & h3 {
+            margin: 0;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -106,6 +110,7 @@ i {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    font-size: 18px;
 
     &.fa-edit {
         color: rgb(145, 220, 255);
